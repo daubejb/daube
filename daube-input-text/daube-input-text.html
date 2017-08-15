@@ -1,0 +1,143 @@
+<template id="daube-input-text">
+  <style>
+    :host {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      transition: all 0.3s ease-out;
+    }
+    #inputdiv {
+      margin: 20px;
+      padding: 10px 10px 20px 10px;
+      display: flex;
+      flex-flow: column wrap;
+      position: relative;
+      max-width: 720px;
+    }
+    /* State - idle + empty */
+    input {
+      background-color: rgba(0,0,0,0);
+      font-size: 16px;
+      padding: 0px;
+      padding-bottom: 8px;
+      margin: 0;
+      border: none;
+      border-bottom: 1px solid rgba(0,0,0,0.42);
+      width: 100%;
+    }
+    input:focus {
+      outline:none;
+    }
+    label {
+      position: absolute;
+      top: 10px;
+      background-color: rgba(0,0,0,0);
+      font-size: 16px;
+      color: rgba(0,0,0,0.54);
+      font-weight: normal;
+      z-index: 1;
+      pointer-events: none;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: rgba(0,0,0,0);
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: rgba(0,0,0,0);
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: rgba(0,0,0,0);
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: rgba(0,0,0,0);
+    }
+    /* State - hover */
+    input:hover {
+      border-bottom: 2px solid rgba(0,0,0,0.87);
+    }
+    /* State - focus */
+    input:focus {
+      border-bottom: 2px solid rgba(0,0,255,0.87);
+      color: rgba(0,0,0,.87);
+    }
+    input:valid {
+      color: rgba(0,0,0,.87);
+    }
+    input:focus + label, input:valid + label {
+      transform: translateY(-25px);
+      color: rgba(0,0,255,0.87);
+      font-size: 14px;
+    }
+    /* TODO State - error */
+    /* TODO State - disabled */
+  </style>
+  <div id="inputdiv">
+    <input type="text" name="demo" required />
+    <label for="demo">Demo Label:</label>
+  </div>
+</template>
+
+<script>
+  (function() {
+    let thisImportDoc = document.currentScript.ownerDocument;
+
+    class DaubeInputText extends HTMLElement {
+      static get observedAttributes() {
+        //TODO - implement autocomplete
+        //TODO - implement autofocus
+        //TODO - implement form
+        //TODO - implement inputmode
+        //TODO - implement name
+        //TODO - implement pattern
+        //TODO - implement value
+        //TODO - implement Helper text
+        return ['label', 'disabled'];
+      }
+
+      get label() {
+        return this._label;
+      }
+
+      set label(v) {
+        if (this._label === v) return;
+        this._label = v;
+        this.setAttribute('label', v);
+      }
+
+      get placeholder() {
+        return this._placeholder;
+      }
+
+      set placeholder(v) {
+        if (this._placeholder === v) return;
+        this._placeholder = v;
+        this.setAttribute('placeholder', v);
+      }
+
+      attributeChangedCallback (name, oldValue, newValue) {
+        this[name] = newValue;
+      }
+
+      constructor() {
+        super();
+      }
+
+
+      static get template() {
+        if (!this._template) {
+          this._template = thisImportDoc.querySelector("#daube-input-text")
+        }
+        return this._template;
+      }
+      connectedCallback() {
+        let shadowRoot = this.attachShadow({mode: 'open'});
+        let tmpl = DaubeInputText.template;
+        shadowRoot.appendChild(document.importNode(tmpl.content,true));
+
+        var label = shadowRoot.querySelector('label');
+        label.innerHTML = this.getAttribute('label')
+
+        var placeholder = shadowRoot.querySelector('input');
+        placeholder.setAttribute('placeholder', this.placeholder);
+      }
+    }
+    customElements.define("daube-input-text", DaubeInputText)
+  })();
+</script>
