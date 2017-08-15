@@ -3,7 +3,6 @@
   <style>
     :host {
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      transition: all 0.3s ease-out;
     }
     #inputdiv {
       margin: 20px;
@@ -104,14 +103,17 @@
         this.setAttribute('label', v);
       }
 
-      get placeholder() {
-        return this._placeholder;
+      get disabled() {
+        return this.hasAttribute('disabled');
       }
 
-      set placeholder(v) {
-        if (this._placeholder === v) return;
-        this._placeholder = v;
-        this.setAttribute('placeholder', v);
+      set disabled(v) {
+        if (v) {
+          this.setAttribute('disabled', '');
+        } else {
+          this.removeAttribute('disabled');
+        }
+        this.toggleDisabled();
       }
 
       attributeChangedCallback (name, oldValue, newValue) {
@@ -130,15 +132,18 @@
         return this._template;
       }
       connectedCallback() {
-        let shadowRoot = this.attachShadow({mode: 'open'});
-        let tmpl = DaubeInputText.template;
-        shadowRoot.appendChild(document.importNode(tmpl.content,true));
-
+        var shadowRoot = this.initShadowDom();
         var label = shadowRoot.querySelector('label');
         label.innerHTML = this.getAttribute('label')
 
-        var placeholder = shadowRoot.querySelector('input');
-        placeholder.setAttribute('placeholder', this.placeholder);
+        var input = shadowRoot.querySelector('input');
+      }
+
+      initShadowDom() {
+        let shadowRoot = this.attachShadow({mode: 'open'});
+        let tmpl = DaubeInputText.template;
+        shadowRoot.appendChild(document.importNode(tmpl.content,true));
+        return shadowRoot;
       }
     }
     customElements.define("daube-input-text", DaubeInputText)
