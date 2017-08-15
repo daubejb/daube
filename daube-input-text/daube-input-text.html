@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../shared.css">
 <template id="daube-input-text">
   <style>
     :host {
@@ -54,15 +55,17 @@
     }
     /* State - focus */
     input:focus {
-      border-bottom: 2px solid rgba(0,0,255,0.87);
+      border-bottom: 2px solid var(--pri-color);
       color: rgba(0,0,0,.87);
     }
     input:valid {
-      color: rgba(0,0,0,.87);
+      color: var(--pri-color);
+      opacity: 0.87;
     }
     input:focus + label, input:valid + label {
       transform: translateY(-25px);
-      color: rgba(0,0,255,0.87);
+      color: var(--pri-color);
+      opacity: 0.87;
       font-size: 14px;
     }
     /* TODO State - error */

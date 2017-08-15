@@ -1,0 +1,38 @@
+/* Theme colors - go to https://material.io/color
+   and pick your desired primary and secondary
+   colors, then navigate to the accessibility
+   tab to determine which text colors are supported
+   on each specific theme color */
+
+/* Save the resulting URL here to reference different
+   design patterns during application build:
+   https://material.io/color/#!/?view.left=0&view.right=0&primary.color=43A047&secondary.color=8E24AA */
+
+:root {
+  --pri-color: #43a047;
+  --pri-light: #76d275;
+  --pri-dark: #00701a;
+
+  --sec-color: #8e24aa;
+  --sec-light: #c158dc;
+  --sec-dark: #5c007a;
+
+  /*--pw-text:  */
+  --pb-norm-text: rgba(0,0,0,0.72);
+  /* --pw-norm-text: rgba(255,255,255,1); */
+  /* --plw-norm-text: rgba(255,255,255,0.91); */
+  --plb-norm-text: rgba(0,0,0,0.59);
+  --pdw-norm-text: rgba(255,255,255,0.79);
+  /* --pdb-norm-text: rgba(0,0,0,0.59); */
+
+  /* --sw-norm-text: rgba(255,255,255,0.91); */
+  --sb-norm-text: rgba(0,0,0,0.74);
+  /* --slw-norm-text: rgba(255,255,255,0.91); */
+  --slb-norm-text: rgba(0,0,0,0.77);
+  --sdw-norm-text: rgba(255,255,255,0.57);
+  /* --sdb-norm-text: rgba(0,0,0,0.59); */
+
+  --back-grey: rgba(225,226,225,1);
+  --back-lightgrey: rgba(245,245,246,1);
+
+}
