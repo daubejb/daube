@@ -90,11 +90,10 @@
         //TODO - implement form
         //TODO - implement inputmode
         //TODO - figure out required
-        //TODO - implement name
         //TODO - implement pattern
         //TODO - implement value
         //TODO - implement Helper text
-        return ['label', 'disabled', 'name'];
+        return ['label', 'disabled', 'name', 'required'];
       }
       
       get name() {
@@ -132,10 +131,25 @@
         }
       }
 
+      get required() {
+        return this.hasAttribute('required');
+      }
+
+      set required(v) {
+        if (v) {
+          this.setAttribute('required', '');
+        } else {
+          this.removeAttribute('required');
+        }
+      }
       attributeChangedCallback (atrValue, oldValue, newValue) {
         if (atrValue === 'disabled') {
           this.toggleDisabled();
           console.log('disabled changed');
+          }
+        if (atrValue === 'required') {
+          this.toggleRequired();
+          console.log('required changed');
           }
         if (atrValue === 'name') {
           this.processName();
@@ -161,7 +175,6 @@
         return this._template;
       }
       connectedCallback() {
-        this.toggleDisabled();
         this.processName();
       }
 
@@ -189,6 +202,15 @@
         } else {
           label.removeAttribute('disabled');
           input.removeAttribute('disabled');
+        }
+      }
+
+      toggleRequired() {
+        var input = this.getInput();
+        if (this.required) {
+          input.setAttribute('required', '');
+        } else {
+          input.removeAttribute('required');
         }
       }
 
