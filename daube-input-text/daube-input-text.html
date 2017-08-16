@@ -118,6 +118,7 @@
 
       attributeChangedCallback (name, oldValue, newValue) {
         this[name] = newValue;
+        
       }
 
       constructor() {
@@ -133,10 +134,9 @@
       }
       connectedCallback() {
         var shadowRoot = this.initShadowDom();
-        var label = shadowRoot.querySelector('label');
+        // var label = shadowRoot.querySelector('label');
+        var label = this.getLabel();
         label.innerHTML = this.getAttribute('label')
-
-        var input = shadowRoot.querySelector('input');
       }
 
       initShadowDom() {
@@ -144,6 +144,20 @@
         let tmpl = DaubeInputText.template;
         shadowRoot.appendChild(document.importNode(tmpl.content,true));
         return shadowRoot;
+      }
+
+      toggledisable() {
+        if (this.disabled) {
+
+        }
+      }
+
+      getLabel() {
+        return this.shadowRoot.querySelector('label');
+      }
+
+      getInput() {
+        return this.shadowRoot.querySelector('input');
       }
     }
     customElements.define("daube-input-text", DaubeInputText)
