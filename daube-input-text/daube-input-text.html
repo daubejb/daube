@@ -74,7 +74,7 @@
     }
   </style>
   <div id="inputdiv">
-    <input type="text" name="demo" required />
+    <input type="text" name="demo" />
     <label for="demo">Demo Label:</label>
   </div>
 </template>
@@ -89,21 +89,35 @@
         //TODO - implement autofocus
         //TODO - implement form
         //TODO - implement inputmode
+        //TODO - figure out required
         //TODO - implement name
         //TODO - implement pattern
         //TODO - implement value
         //TODO - implement Helper text
-        return ['label', 'disabled'];
+        return ['label', 'disabled', 'name'];
+      }
+      
+      get name() {
+        return this._name;
       }
 
-      get label() {
+      set name(v) {
+        if (this._name === v) return;
+        this._name = v;
+        this.setAttribute('name', v);
+      }
+
+       get label() {
         return this._label;
       }
 
       set label(v) {
         if (this._label === v) return;
-        this._label = v;
-        this.setAttribute('label', v);
+        if (v) {
+          this.setAttribute('label', v);
+        } else {
+          this.removeAttribute('label');
+        }
       }
 
       get disabled() {
@@ -118,14 +132,25 @@
         }
       }
 
-      attributeChangedCallback (name, oldValue, newValue) {
-      if (name === 'disabled'){
-        this.toggleDisabled();
-      }
+      attributeChangedCallback (atrValue, oldValue, newValue) {
+        if (atrValue === 'disabled') {
+          this.toggleDisabled();
+          console.log('disabled changed');
+          }
+        if (atrValue === 'name') {
+          this.processName();
+          console.log('name changed');
+          }
+        if (atrValue === 'label') {
+          this.processLabel();
+          console.log('label changed');
+          }
       }
 
       constructor() {
         super();
+        var shadowRoot = this.initShadowDom();
+        var name = '';
       }
 
 
@@ -136,10 +161,8 @@
         return this._template;
       }
       connectedCallback() {
-        var shadowRoot = this.initShadowDom();
-        var label = this.getLabel();
-        label.innerHTML = this.getAttribute('label')
         this.toggleDisabled();
+        this.processName();
       }
 
       initShadowDom() {
@@ -168,7 +191,22 @@
           input.removeAttribute('disabled');
         }
       }
-    }
+
+      processName() {
+        var input = this.getInput();
+        if (!this.hasAttribute('name')) {
+          input.removeAttribute('name');
+        } else {
+        input.setAttribute('name', this.getAttribute('name'));
+        }
+      }
+
+      processLabel() {
+        var label = this.getLabel();
+        label.innerHTML = this.getAttribute('label')
+      }
+
+    } // Class DaubeInputText
     customElements.define("daube-input-text", DaubeInputText)
   })();
 </script>
