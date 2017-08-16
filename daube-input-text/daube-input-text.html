@@ -89,11 +89,10 @@
         //TODO - implement autofocus
         //TODO - implement form
         //TODO - implement inputmode
-        //TODO - figure out required
         //TODO - implement pattern
         //TODO - implement value
         //TODO - implement Helper text
-        return ['label', 'disabled', 'name', 'required'];
+        return ['label', 'disabled', 'name', 'required', 'autocomplete'];
       }
       
       get name() {
@@ -142,6 +141,18 @@
           this.removeAttribute('required');
         }
       }
+
+      get autocomplete() {
+        return this.hasAttribute('autocomplete');
+      }
+
+      set autocomplete(v) {
+        if (v) {
+          this.setAttribute('autocomplete', 'yes');
+        } else {
+          this.removeAttribute('autocomplete');
+        }
+      }
       attributeChangedCallback (atrValue, oldValue, newValue) {
         if (atrValue === 'disabled') {
           this.toggleDisabled();
@@ -150,6 +161,10 @@
         if (atrValue === 'required') {
           this.toggleRequired();
           console.log('required changed');
+          }
+        if (atrValue === 'autocomplete') {
+          this.toggleAutocomplete();
+          console.log('autocomplete changed');
           }
         if (atrValue === 'name') {
           this.processName();
@@ -175,7 +190,7 @@
         return this._template;
       }
       connectedCallback() {
-        this.processName();
+
       }
 
       initShadowDom() {
@@ -214,6 +229,14 @@
         }
       }
 
+      toggleAutocomplete() {
+        var input = this.getInput();
+        if (this.autocomplete) {
+          input.setAttribute('autocomplete', 'yes');
+        } else {
+          input.removeAttribute('autocomplete');
+        }
+      }
       processName() {
         var input = this.getInput();
         if (!this.hasAttribute('name')) {
