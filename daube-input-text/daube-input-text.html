@@ -69,6 +69,9 @@
     }
     /* TODO State - error */
     /* TODO State - disabled */
+    input:disabled, label:disabled {
+      border-bottom: 1px dotted rgba(0,0,0,0.42);
+    }
   </style>
   <div id="inputdiv">
     <input type="text" name="demo" required />
@@ -113,12 +116,12 @@
         } else {
           this.removeAttribute('disabled');
         }
-        this.toggleDisabled();
       }
 
       attributeChangedCallback (name, oldValue, newValue) {
-        this[name] = newValue;
-        
+      if (name === 'disabled'){
+        this.toggleDisabled();
+      }
       }
 
       constructor() {
@@ -134,9 +137,9 @@
       }
       connectedCallback() {
         var shadowRoot = this.initShadowDom();
-        // var label = shadowRoot.querySelector('label');
         var label = this.getLabel();
         label.innerHTML = this.getAttribute('label')
+        this.toggleDisabled();
       }
 
       initShadowDom() {
@@ -146,18 +149,24 @@
         return shadowRoot;
       }
 
-      toggledisable() {
-        if (this.disabled) {
-
-        }
-      }
-
       getLabel() {
         return this.shadowRoot.querySelector('label');
       }
 
       getInput() {
         return this.shadowRoot.querySelector('input');
+      }
+
+      toggleDisabled() {
+        var label = this.getLabel();
+        var input = this.getInput();
+        if (this.disabled) {
+          label.setAttribute('disabled', '');
+          input.setAttribute('disabled', '');
+        } else {
+          label.removeAttribute('disabled');
+          input.removeAttribute('disabled');
+        }
       }
     }
     customElements.define("daube-input-text", DaubeInputText)
