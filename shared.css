@@ -9,13 +9,13 @@
    https://material.io/color/#!/?view.left=0&view.right=0&primary.color=43A047&secondary.color=8E24AA */
 
 :root {
-  --pri-color: #43a047;
-  --pri-light: #76d275;
-  --pri-dark: #00701a;
+  --primary-color: #43a047;
+  --primary-light: #76d275;
+  --primary-dark: #00701a;
 
-  --sec-color: #8e24aa;
-  --sec-light: #c158dc;
-  --sec-dark: #5c007a;
+  --secondary-color: #8e24aa;
+  --secondary-light: #c158dc;
+  --secondary-dark: #5c007a;
 
   /*--pw-text:  */
   --pb-norm-text: rgba(0,0,0,0.72);
@@ -35,4 +35,12 @@
   --back-grey: rgba(225,226,225,1);
   --back-lightgrey: rgba(245,245,246,1);
 
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  box-sizing: border-box;
+  margin: 0rem;
+  padding: 0rem;
+  font-size: 16px;
 }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.66rem; }
+h3 { font-size: 1.25rem; }
