@@ -1,10 +1,7 @@
 <link rel="stylesheet" href="../shared.css">
 <template id="daube-input-text">
   <style>
-    :host {
-
-      font-size: 1rem;
-    }
+    :host { font-size: 1rem; }
     /* State - idle + empty **************************/
     #inputdiv {
       margin: 2rem;
@@ -13,7 +10,7 @@
       -webkit-flex-direction: column;
       flex-direction: column;
       position: relative;
-      max-width: 60rem;
+      max-width: 45rem;
       height: 3.2rem;
     }
     input {
@@ -42,6 +39,10 @@
     input:hover ~ label {
       color: var(--primary-color);
     }
+
+    input:disabled:hover ~ label {
+      color: rgba(0,0,0,0.25);
+    }
     /* State - focus ********************************/
     input:focus {
       outline:none;
@@ -50,29 +51,25 @@
     input:focus ~ label {
       color: var(--primary-color);
     }
-
-    ::-webkit-input-placeholder { color: rgba(0,0,0,0); } /* Chrome/Opera/Safari */
-    ::-moz-placeholder { color: rgba(0,0,0,0); } /* Firefox 19+ */
-    :-ms-input-placeholder { color: rgba(0,0,0,0); } /* IE 10+ */
-    :-moz-placeholder { color: rgba(0,0,0,0); } /* Firefox 18- */
-
-
-    /* State - focus */
+    /* State - focus ********************************/
     input:focus {
       border-bottom: 2px solid var(--primary-color);
       color: rgba(0,0,0,.87);
     }
-
     input:valid {
       color: var(--pb-normal-text);
       opacity: 0.87;
     }
-
-    /* TODO State - error */
     input:disabled, label:disabled {
-      border-bottom: 1px dotted rgba(0,0,0,0.42);
+      border-bottom: 1px dashed rgba(0,0,0,0.42);
       color: rgba(0,0,0,0.25);
     }
+    /* TODO State - error ***************************/
+    /* NEVER USE PLACEHOLDERS ***********************/
+    ::-webkit-input-placeholder { color: rgba(0,0,0,0); } /* Chrome/Opera/Safari */
+    ::-moz-placeholder { color: rgba(0,0,0,0); } /* Firefox 19+ */
+    :-ms-input-placeholder { color: rgba(0,0,0,0); } /* IE 10+ */
+    :-moz-placeholder { color: rgba(0,0,0,0); } /* Firefox 18- */
   </style>
   <div id="inputdiv">
     <input type="text" name="demo" required/>
@@ -83,7 +80,6 @@
 <script>
   (function() {
     let thisImportDoc = document.currentScript.ownerDocument;
-
     class DaubeInputText extends HTMLElement {
       static get observedAttributes() {
         //TODO - input has to be required for styles to work - figure this out later
@@ -184,16 +180,13 @@
         var name = '';
       }
 
-
       static get template() {
         if (!this._template) {
           this._template = thisImportDoc.querySelector("#daube-input-text")
         }
         return this._template;
       }
-      connectedCallback() {
-
-      }
+      connectedCallback() {}
 
       initShadowDom() {
         let shadowRoot = this.attachShadow({mode: 'open'});
@@ -239,6 +232,7 @@
           input.removeAttribute('autocomplete');
         }
       }
+      
       processName() {
         var input = this.getInput();
         if (!this.hasAttribute('name')) {
