@@ -57,24 +57,34 @@
       border-bottom: 2px solid var(--pri-color);
       color: rgba(0,0,0,.87);
     }
+
     input:valid {
-      color: var(--pri-color);
+      color: var(--pb-normal-text);
       opacity: 0.87;
     }
-    input:focus + label, input:valid + label {
+
+    input:not(:empty) ~ label{
       transform: translateY(-25px);
       color: var(--pri-color);
       opacity: 0.87;
       font-size: 14px;
     }
+
+    input:focus ~ label, input:required:valid ~ label {
+      transform: translateY(-25px);
+      color: var(--pri-color);
+      opacity: 0.87;
+      font-size: 14px;
+    }
+
     /* TODO State - error */
-    /* TODO State - disabled */
     input:disabled, label:disabled {
       border-bottom: 1px dotted rgba(0,0,0,0.42);
+      color: rgba(0,0,0,0.25);
     }
   </style>
   <div id="inputdiv">
-    <input type="text" name="demo" />
+    <input type="text" name="demo" required/>
     <label for="demo">Demo Label:</label>
   </div>
 </template>
@@ -85,6 +95,7 @@
 
     class DaubeInputText extends HTMLElement {
       static get observedAttributes() {
+        //TODO - input has to be required for styles to work - figure this out later
         //TODO - implement autocomplete
         //TODO - implement autofocus
         //TODO - implement form
@@ -94,7 +105,7 @@
         //TODO - implement Helper text
         return ['label', 'disabled', 'name', 'required', 'autocomplete'];
       }
-      
+
       get name() {
         return this._name;
       }
