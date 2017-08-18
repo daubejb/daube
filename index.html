@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Daube Web Components</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="import" href="daube-header/daube-header.html" >
     <link rel="import" href="daube-input-text/daube-input-text.html" >
+    <link rel="import" href="daube-user-menu/daube-user-menu.html" >
+    <link rel="import" href="daube-user-icon/daube-user-icon.html" >
   </head>
   <body>
     <daube-header></daube-header>
+    <daube-user-icon></daube-user-icon>
+    <daube-user-menu></daube-user-menu>
     <daube-input-text label="Name" name="Jeff"></daube-input-text>
     <daube-input-text label="Description" required></daube-input-text>
   </body>
+  <script>
+    var daubeUserMenu = document.querySelector('daube-user-menu');
+    var body = document.querySelector('body');
+    body.addEventListener('user-icon-clicked', e => {
+      toggleUserMenu();
+    });
+
+    function toggleUserMenu() {
+      if (daubeUserMenu.display) {
+        daubeUserMenu.removeAttribute('display');
+      } else {
+        daubeUserMenu.setAttribute('display', '');
+      }
+    }
+  </script>
 </html>

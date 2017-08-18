@@ -5,12 +5,13 @@
         padding-right: 1.5rem;
         float: right;
         border-radius: 50%;
-        position: fixed;
+        position: absolute;
         right: 0rem;
         top: 0.66rem;
         width: 2.25rem;
         height: 2.25rem;
         vertical-align: middle;
+        z-index: 2;
       }
       #avatar {
         display: block;
@@ -18,7 +19,7 @@
         height: 2.25rem;
         border-radius: 50%;
         cursor: pointer;
-        z-index: 10;
+        z-index: 2;
       }
   </style>
   <div id="usericon">
@@ -41,9 +42,9 @@
         return this._template;
       }
       connectedCallback() {
-        // var shadowRoot = this.shadowRoot;
         var usericon = this.shadowRoot.querySelector('#avatar');
         usericon.addEventListener('click', this.onClick);
+
       }
       onClick(e) {
         this.dispatchEvent(new CustomEvent('user-icon-clicked',
