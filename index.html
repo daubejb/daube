@@ -10,15 +10,23 @@
     <link rel="import" href="daube-user-icon/daube-user-icon.html" >
     <link rel="import" href="daube-radio/daube-radio.html" >
     <link rel="import" href="daube-button/daube-button.html" >
+    <link rel="import" href="daube-card/daube-card.html" >
   </head>
-  <body>
+  <body style="background-color: var(--back-lightgrey)">
     <daube-header></daube-header>
     <daube-user-icon></daube-user-icon>
     <daube-user-menu></daube-user-menu>
-    <daube-input-text label="Name" name="Jeff"></daube-input-text>
-    <daube-input-text label="Description" required></daube-input-text>
-    <daube-radio></daube-radio>
-    <daube-button></daube-button>
+    <daube-card>
+      <h2>Amazing Form</h2>
+      <daube-input-text label="Name" name="Jeff"></daube-input-text>
+      <daube-input-text label="Description" required></daube-input-text>
+      <daube-radio></daube-radio>
+      <daube-button></daube-button>
+    </daube-card>
+    <<daube-card>
+      <h2>Hi Peter</h2>
+      <daube-input-text label="Neat" disabled></daube-input-text>
+    </daube-card>
   </body>
   <script>
     var daubeUserMenu = document.querySelector('daube-user-menu');
