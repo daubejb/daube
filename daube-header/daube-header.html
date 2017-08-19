@@ -2,27 +2,29 @@
 <!-- <link rel="import" href="../daube-user-icon/daube-user-icon.html" > -->
 <template id="daube-header">
   <style>
+    :host {
+      display: block;
+    }
     header {
-      display: flex;
-      flex-direction: row;
-      position: relative;
+      display: inline-block;
+      width: 100%;
+      position: fixed;
+      top: 0;
       background-color: var(--primary-color);
       color: var(--text-primary-white);
-      align-items: center;
-      /*TODO - update this text color to be ideal for primary color*/
       height: 3.5rem;
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
     .maintitle {
-      padding-left: 1.5rem;
+      padding: 0.92rem 0rem 0.92rem 1.5rem;
       font-weight: 200;
       font-size: 1.66rem;
-      display: inline-flex;
+      height: 3.5rem;
     }
   </style>
   <header>
     <div class="maintitle">Header</div>
-    <!-- <daube-user-icon></daube-user-icon> -->
+    <slot></slot>
   </header>
 </template>
 

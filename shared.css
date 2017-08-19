@@ -13,10 +13,6 @@
   --primary-light: #60ad5e;
   --primary-dark: #005005;
 
-  --secondary-color: #8e24aa;
-  --secondary-light: #c158dc;
-  --secondary-dark: #5c007a;
-
   --text-primary-white: rgba(255,255,255,0.81);
 
   --back-grey: rgba(225,226,225,1);
@@ -27,7 +23,8 @@
   font-size: 16px;
 }
 h1 { font-size: 2rem; }
-h2 { font-size: 1.66rem; }
+h2 { font-size: 1.5rem; }
 h3 { font-size: 1.25rem; }
 html, body { min-height: 100vh; }
 * { margin: 0; padding: 0; }
+body { margin-top: 4.5rem; }

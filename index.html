@@ -11,11 +11,17 @@
     <link rel="import" href="daube-radio/daube-radio.html" >
     <link rel="import" href="daube-button/daube-button.html" >
     <link rel="import" href="daube-card/daube-card.html" >
+    <link rel="import" href="daube-dialog/daube-dialog.html" >
   </head>
   <body style="background-color: var(--back-lightgrey)">
-    <daube-header></daube-header>
-    <daube-user-icon></daube-user-icon>
+    <daube-header>
+        <daube-user-icon></daube-user-icon>
+    </daube-header>
     <daube-user-menu></daube-user-menu>
+    <daube-dialog>
+      <daube-button slot="negative">Cancel</daube-button>
+      <daube-button slot="positive">Continue</daube-button>
+    </daube-dialog>
     <daube-card>
       <h2>Amazing Form</h2>
       <daube-input-text label="Name" name="Jeff"></daube-input-text>
@@ -23,24 +29,32 @@
       <daube-radio></daube-radio>
       <daube-button></daube-button>
     </daube-card>
-    <<daube-card>
+    <daube-card>
       <h2>Hi Peter</h2>
       <daube-input-text label="Neat" disabled></daube-input-text>
     </daube-card>
   </body>
   <script>
-    var daubeUserMenu = document.querySelector('daube-user-menu');
+
     var body = document.querySelector('body');
     body.addEventListener('user-icon-clicked', e => {
       toggleUserMenu();
     });
+    body.addEventListener('daube-button-clicked', e => {
+      showDialog();
+    })
 
     function toggleUserMenu() {
+      var daubeUserMenu = document.querySelector('daube-user-menu');
       if (daubeUserMenu.display) {
         daubeUserMenu.removeAttribute('display');
       } else {
         daubeUserMenu.setAttribute('display', '');
       }
+    }
+    function showDialog() {
+      daubeDialog = document.querySelector('daube-dialog');
+      daubeDialog.setAttribute('display', '');
     }
   </script>
 </html>
