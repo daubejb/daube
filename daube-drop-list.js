@@ -8,7 +8,6 @@
     }
     static get template() {
       return`
-<link rel="stylesheet" href="../shared.css">
 <style>
   label {
     position: absolute;
@@ -44,7 +43,7 @@ input:hover {
     border-bottom: 2px solid rgba(0,0,0,0.87);
   }
   input:hover ~ label {
-    color: var(--primary-color);
+    color: #237d32;
   }
 
   input:disabled:hover ~ label {
@@ -56,15 +55,15 @@ input:hover {
     background: rgba(0,0,0,0.05);
   }
   input:focus ~ label {
-    color: var(--primary-color);
+    color: #237d32;
   }
   /* State - focus ********************************/
   input:focus {
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid #237d32;
     color: rgba(0,0,0,.87);
   }
   input:valid {
-    color: var(--pb-normal-text);
+    color: rgba(0,0,0,0.87);
     opacity: 0.87;
   }
   input:disabled, label:disabled {

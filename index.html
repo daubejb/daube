@@ -14,8 +14,21 @@
     <script src="./daube-dialog.js"></script>
     <script src="./daube-drop-list.js"></script>
     <script src="./daube-list.js"></script>
+    <style>
+      :root {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.25rem; }
+      html, body { min-height: 100vh; }
+      * { margin: 0; padding: 0; }
+      body { margin-top: 4.5rem; }
+    </style>
   </head>
-  <body style="background-color: var(--back-lightgrey)">
+  <body style="background-color: rgba(0,0,0,0.05);">
     <daube-header>
         <daube-user-icon></daube-user-icon>
     </daube-header>
@@ -32,10 +45,6 @@
       <daube-radio></daube-radio>
       <daube-drop-list></daube-drop-list>
       <daube-button></daube-button>
-    </daube-card>
-    <daube-card>
-      <script src="./new-way/new-way.js"></script>
-      <new-way></new-way>
     </daube-card>
     <daube-card>
       <daube-list></daube-list>

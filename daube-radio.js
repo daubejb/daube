@@ -8,7 +8,7 @@
       var shadowRoot = this.initShadowDom();
     }
     static get template() {
-      return `<link rel="stylesheet" href="../shared.css">
+      return `
 <style>
   :host { font-size: 1rem; }
   /* State - idle + empty **************************/
@@ -44,17 +44,17 @@
   }
   label {
     font-size: 0.95rem;
-    color: var(--pb-normal-text);
+    color: rgba(0,0,0,0.87);
     opacity: 0.87;
     margin-bottom: 1rem;
     vertical-align: middle;
     display: inline-block;
   }
   input:hover, {
-    border: 2px solid var(--primary-color);
+    border: 2px solid #237d32;
   }
   input:checked+label {
-    color: var(--primary-color)
+    color: #237d32;
   }
 </style>
 <div id="radiogroup">

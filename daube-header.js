@@ -2,7 +2,7 @@
     let thisImportDoc = document.currentScript.ownerDocument;
     class DaubeHeader extends HTMLElement {
       static get template() {
-      return `<link rel="stylesheet" href="../shared.css">
+      return `
 <style>
   :host {
     display: block;
@@ -12,8 +12,8 @@
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: var(--primary-color);
-    color: var(--text-primary-white);
+    background-color: #237d32;
+    color: rgba(255,255,255,0.81);
     height: 3.5rem;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }

@@ -7,7 +7,7 @@
       var shadowRoot = this.initShadowDom();
     }
     static get template() {
-      return `<link rel="stylesheet" href="../shared.css">
+      return `
 <style>
   :host { font-size: 1rem; }
   table {
@@ -22,7 +22,7 @@
   }
   tbody tr td, .bookroom {
     border-top: 1px solid rgba(0,0,0,0.2);
-    color: var(--text-primary-black);
+    color: rgba(0,0,0,0.87);
     text-align: center;
     padding-top: .35rem;
     padding-bottom: .3rem;
@@ -33,7 +33,7 @@
   }
   .bookroom:hover {
     cursor: pointer;
-    color: var(--primary-color);
+    color: #237d32;
     font-size: 2rem;
   }
   .alignleft {
@@ -58,26 +58,26 @@
   <tbody>
     <tr>
       <td class="alignleft">14-14n120-avLab</td>
-      <td class="bookroom">☑</td>
-      <td class="bookroom">☑</td>
+      <td class="bookroom">▢</td>
+      <td class="bookroom">▢</td>
       <td class="no">—</td>
     </tr>
     <tr>
       <td class="alignleft">20W204-roof</td>
       <td class="no">—</td>
-      <td class="bookroom">☑</td>
-      <td class="bookroom">☑</td>
+      <td class="bookroom">▢</td>
+      <td class="bookroom">▢</td>
     </tr>
     <tr>
       <td class="alignleft">20e351-rooftop</td>
-      <td class="bookroom">☑</td>
+      <td class="bookroom">▢</td>
       <td class="no">—</td>
       <td class="no">—</td>
     </tr>
     <tr>
       <td class="alignleft">9s410-shadowman-14-p-vc</td>
-      <td class="bookroom">☑</td>
-      <td class="bookroom">☑</td>
+      <td class="bookroom">▢</td>
+      <td class="bookroom">▢</td>
       <td class="no">—</td>
     </tr>
   </tbody>

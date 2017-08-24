@@ -101,7 +101,7 @@
     }
 
     static get template() {
-      return`<link rel="stylesheet" href="../shared.css">
+      return`
 <style>
   :host { font-size: 1rem; }
   /* State - idle + empty **************************/
@@ -125,6 +125,7 @@
     border-bottom: 1px solid rgba(0,0,0,0.42);
     width: 100%;
     font-size: 1rem;
+    color: rgba(0,0,0,0.87);
   }
   label {
     position: absolute;
@@ -139,7 +140,7 @@
     border-bottom: 2px solid rgba(0,0,0,0.87);
   }
   input:hover ~ label {
-    color: var(--primary-color);
+    color: #237d32;
   }
 
   input:disabled:hover ~ label {
@@ -151,16 +152,15 @@
     background: rgba(0,0,0,0.05);
   }
   input:focus ~ label {
-    color: var(--primary-color);
+    color: #237d32;
   }
   /* State - focus ********************************/
   input:focus {
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid #237d32;
     color: rgba(0,0,0,.87);
   }
   input:valid {
-    color: var(--pb-normal-text);
-    opacity: 0.87;
+    color: rgba(255,255,255,0.87);
   }
   input:disabled, label:disabled {
     border-bottom: 1px dashed rgba(0,0,0,0.42);

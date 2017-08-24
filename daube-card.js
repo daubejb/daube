@@ -8,7 +8,6 @@
     }
     static get template() {
       return`
-<link rel="stylesheet" href="../shared.css">
 <style>
   :host {
     display: block;

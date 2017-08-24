@@ -26,7 +26,7 @@
       var shadowRoot = this.initShadowDom();
     }
     static get template() {
-      return `<link rel="stylesheet" href="../shared.css">
+      return `
 <style>
   #dialogmodal {
     position: absolute;
