@@ -4,14 +4,16 @@
     <title>Daube Web Components</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="import" href="daube-header/daube-header.html" >
+    <script src="./daube-header.js"></script>
     <link rel="import" href="daube-input-text/daube-input-text.html" >
-    <link rel="import" href="daube-user-menu/daube-user-menu.html" >
-    <link rel="import" href="daube-user-icon/daube-user-icon.html" >
-    <link rel="import" href="daube-radio/daube-radio.html" >
+    <script src="./daube-user-menu.js"></script>
+    <script src="./daube-user-icon.js"></script>
+    <script src="./daube-radio.js"></script>
     <link rel="import" href="daube-button/daube-button.html" >
     <link rel="import" href="daube-card/daube-card.html" >
-    <link rel="import" href="daube-dialog/daube-dialog.html" >
+    <script src="./daube-dialog.js"></script>
+    <link rel="import" href="daube-drop-list/daube-drop-list.html" >
+    <link rel="import" href="daube-list/daube-list.html">
   </head>
   <body style="background-color: var(--back-lightgrey)">
     <daube-header>
@@ -23,19 +25,20 @@
       <daube-button slot="positive">Continue</daube-button>
     </daube-dialog>
     <daube-card>
-      <h2>Amazing Form</h2>
+      <h2>Simple Form</h2>
       <daube-input-text label="Name" name="Jeff"></daube-input-text>
       <daube-input-text label="Description" required></daube-input-text>
+      <daube-input-text label="Address" name="address"></daube-input-text>
       <daube-radio></daube-radio>
+      <daube-drop-list></daube-drop-list>
       <daube-button></daube-button>
     </daube-card>
     <daube-card>
-      <h2>Hi Peter</h2>
-      <daube-input-text label="Neat" disabled></daube-input-text>
+      <script src="./new-way/new-way.js"></script>
+      <new-way></new-way>
     </daube-card>
   </body>
   <script>
-
     var body = document.querySelector('body');
     body.addEventListener('user-icon-clicked', e => {
       toggleUserMenu();
